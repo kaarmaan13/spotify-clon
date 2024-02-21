@@ -12,7 +12,6 @@ const { playlist } = Astro.props;
 const { id, cover, title, artists, color } = playlist;
 
 const artistString = printArtists(artists);
-// const artistString = artists.join(', ');
 ---
 
 <a href={`/playlist/${id}`} class="playlist-item flex gap-x-2 relative p-3 items-center rounded-md hover:bg-[#242424] text-gray-300 hover:text-white transition duration-300">

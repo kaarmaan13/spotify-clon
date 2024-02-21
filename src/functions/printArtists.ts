@@ -1,6 +1,6 @@
-export function printArtists(artists: string[]) {
+export function printArtists(artists: string[] | undefined) {
   // Verify is there are artist to print
-  if (artists.length === 0) {
+  if (typeof artists === 'undefined' || artists.length === 0) {
     console.log("Not artists to print");
     return;
   }

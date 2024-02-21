@@ -6,6 +6,7 @@ interface Props {
 const { title } = Astro.props;
 import '@fontsource-variable/plus-jakarta-sans';
 import AsideMenu from "../components/AsideMenu.astro";
+import { ViewTransitions } from 'astro:transitions';
 ---
 
 <!doctype html>
@@ -17,16 +18,17 @@ import AsideMenu from "../components/AsideMenu.astro";
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+		<ViewTransitions fallback='none' />
 	</head>
 	<body>
 		<div id="app" class="relative h-screen px-2 py-3 gap-3">
 			<aside class="[grid-area:aside] flex flex-col overflow-y-auto rounded-[10px]">
 				<AsideMenu />
 			</aside>
-			<main class="[grid-area:main] rounded-[10px] overflow-y-auto">
+			<main class="[grid-area:main] rounded-[10px] overflow-y-auto bg-[#121212]">
 				<slot />
 			</main>
-			<footer class="[grid-area:player] min-h-[100px] rounded-[10px] p-3 bg-[#121212]">
+			<footer class="[grid-area:player] min-h-[100px] rounded-[10px] p-3 v">
 				PLAYER
 			</footer>
 			
