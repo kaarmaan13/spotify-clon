@@ -29,7 +29,7 @@ import { ViewTransitions } from 'astro:transitions';
 			<main class="[grid-area:main] rounded-[10px] overflow-y-auto bg-[#121212]">
 				<slot />
 			</main>
-			<footer class="[grid-area:player] min-h-[100px] rounded-[10px] p-3 v">
+			<footer class="[grid-area:player] bg-[#121212] min-h-[100px] rounded-[10px] p-3 v">
 				<Player client:load transition:name="media-player" transition:persist />
 			</footer>
 		</div>

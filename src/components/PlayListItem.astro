@@ -2,6 +2,7 @@
 import type { Playlist } from "@/lib/data";
 
 import { printArtists } from "@/functions/printArtists";
+import { CardPlayButton } from "@/components/CardPlayButton.jsx";
 
 interface Props {
   playlist: Playlist;
@@ -14,21 +15,35 @@ const { id, cover, title, artists, color } = playlist;
 const artistString = printArtists(artists);
 ---
 
-<a 
-  href={`/playlist/${id}`}
-  class="playlist-item flex flex-col flex-1 gap-2 relative p-3 gap-y-3 rounded-md hover:bg-[#242424] text-gray-300 hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl w-44 h-auto"
-  transition:name=`playlist ${id} box`
->
-  <picture class="flex-none aspect-square">
-    <img
-      src={cover}
-      alt={`Cover of ${title} by ${artistString}`}
-      class="object-cover size-full rounded-md"
-      transition:name=`playlist ${id} image`
-    />
-  </picture>
-  <div class="flex flex-auto flex-col gap-y-1">
-    <h4 class="font-semibold text-sm" transition:name=`playlist ${playlist?.id} title`>{title}</h4>
-    <span class="text-xs" transition:name=`playlist ${playlist?.id} artists`>{artistString}</span>
+<article class="group relative hover:bg-[#242424] shadow-lg hover:shadow-xl rounded-md transition-all duration-300">
+  <div
+    class="absolute  right-7 bottom-10 translate-y-0 transition-all duration-500 opacity-0 group-hover:-translate-y-10 group-hover:opacity-100 z-10"
+  >
+    <CardPlayButton id={id} client:visible/>
   </div>
-</a>
+  <a
+    href={`/playlist/${id}`}
+    class="playlist-item flex flex-col flex-1 gap-2 relative p-3 gap-y-3 text-gray-300 hover:text-white w-44 h-auto"
+    transition:name=`playlist ${id} box`
+  >
+    <picture class="flex-none aspect-square">
+      <img
+        src={cover}
+        alt={`Cover of ${title} by ${artistString}`}
+        class="object-cover size-full rounded-md"
+        transition:name=`playlist ${id} image`
+      />
+    </picture>
+    <div class="flex flex-auto flex-col gap-y-1">
+      <h4
+        class="font-semibold text-sm"
+        transition:name=`playlist ${playlist?.id} title`
+      >
+        {title}
+      </h4>
+      <span class="text-xs" transition:name=`playlist ${playlist?.id} artists`
+        >{artistString}</span
+      >
+    </div>
+  </a>
+</article>
