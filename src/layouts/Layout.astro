@@ -5,7 +5,8 @@ interface Props {
 
 const { title } = Astro.props;
 import '@fontsource-variable/plus-jakarta-sans';
-import AsideMenu from "../components/AsideMenu.astro";
+import AsideMenu from "@/components/AsideMenu.astro";
+import { Player } from "@/components/Player.jsx";
 import { ViewTransitions } from 'astro:transitions';
 ---
 
@@ -29,9 +30,8 @@ import { ViewTransitions } from 'astro:transitions';
 				<slot />
 			</main>
 			<footer class="[grid-area:player] min-h-[100px] rounded-[10px] p-3 v">
-				PLAYER
+				<Player client:load transition:name="media-player" transition:persist />
 			</footer>
-			
 		</div>
 	</body>
 </html>

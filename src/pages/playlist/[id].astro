@@ -13,7 +13,7 @@ const playlistSongs = songs.filter(
 );
 const durationArray = playlistSongs.map((song) => song.duration);
 
-function durationMinutes(duration: any) {
+function durationMinutes(duration: string) {
   const parts = duration.split(":");
   const mins = parseInt(parts[0], 10);
   const secs = parseInt(parts[1], 10);
@@ -45,8 +45,8 @@ const songWords = playlistSongs.length > 1 ? "songs" : "song";
           transition:name=`playlist ${playlist?.id} image`
         />
       </picture>
-      <div class="flex flex-col justify-between">
-        <h2 class="flex flex1 items-end">Playlist</h2>
+      <div class="flex flex-col justify-end">
+        <h2 class="flex items-end">Playlist</h2>
         <div>
           <h1
             class="title-clamp text-3xl font-bold block"
@@ -55,7 +55,7 @@ const songWords = playlistSongs.length > 1 ? "songs" : "song";
             {playlist?.title}
           </h1>
         </div>
-        <div class="flex flex-1 items-end">
+        <div class="flex items-end pt-10">
           <div class="text-sm text-gray-300 font-normal">
             <div transition:name=`playlist ${playlist?.id} artists`>
               <span>{printArtists(playlist?.artists)}</span>
